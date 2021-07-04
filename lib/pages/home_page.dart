@@ -1,15 +1,17 @@
+import 'package:demoapp/pages/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Homepage extends StatelessWidget {
-  //const Homepage({Key? key}) : super(key: key);
-  String fullName = '';
+  const Homepage({Key? key}) : super(key: key);
+  //String fullName = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Task-3",
+          "Task-4",
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -45,21 +47,33 @@ class Homepage extends StatelessWidget {
 
             //margin: EdgeInsets.all(20),
             TextButton(
-              child: Text('Login'),
+              child: Text('Submit : Click to go to login page'),
               style: TextButton.styleFrom(
                   primary: Colors.yellow, backgroundColor: Colors.blue),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, Myroutes.loginroute);
+              },
             ),
-
             SizedBox(
-              width: 300,
-              height: 50,
+              width: 130,
+              height: 40,
               child: ElevatedButton(
-                child: Text("SizedBox"),
-                style: ElevatedButton.styleFrom(primary: Colors.red),
-                onPressed: () {},
+                onPressed: _launchURL,
+                child: Text("Launch URL"),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.red)),
               ),
             ),
+
+            // SizedBox(
+            //   width: 300,
+            //   height: 50,
+            //   child: ElevatedButton(
+            //     child: Text("SizedBox"),
+            //     style: ElevatedButton.styleFrom(primary: Colors.red),
+            //     onPressed: () {},
+            //   ),
+            // ),
             Row(children: <Widget>[
               Center(child: Icon(Icons.directions_transit)),
               Center(
@@ -88,17 +102,30 @@ class Homepage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 400,
-              width: 400,
-              color: Colors.red,
+              height: 45,
+              width: double.infinity,
+              //decoration: BoxDecoration(),
+              color: Colors.white,
               child: Text(
-                "Drawer Menu",
-                style: TextStyle(fontSize: 30, color: Colors.blue),
+                "       Drawer Menu",
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               ),
             )
           ],
         ),
       ),
     );
+  }
+}
+
+_launchURL() async {
+  const url = 'https://flutterdevs.com/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw "Cound Not Launch $url";
   }
 }

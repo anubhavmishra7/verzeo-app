@@ -11,6 +11,18 @@ class LoginPage extends StatelessWidget {
         //Container 1
 
         Image.asset("assets/images/login.png"),
+        Text("This right here is the Second Screen"),
+        SizedBox(
+          height: 40,
+        ),
+        //Padding(padding:EdgeInsetsGeometry ),
+        Text(
+          "THANK YOU FOR SUBMITTING !!",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        ),
+        SizedBox(
+          height: 40,
+        ),
 
         //Container 2
         Center(

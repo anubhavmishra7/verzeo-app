@@ -2,7 +2,9 @@
 
 import 'package:demoapp/pages/home_page.dart';
 import 'package:demoapp/pages/login_page.dart';
+import 'package:demoapp/pages/routes.dart';
 import 'package:flutter/material.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,11 +24,13 @@ class MyApp extends StatelessWidget {
           //brightness: Brightness.dark,
           //primarySwatch: Colors.brown),
           ),
-      initialRoute: "/home",
+      initialRoute: Myroutes.homeroute,
       routes: {
         "/": (context) => LoginPage(),
-        "/home": (context) => Homepage(),
-        "/login": (context) => LoginPage(),
+        Myroutes.homeroute: (context) => Homepage(),
+        Myroutes.loginroute: (context) => LoginPage()
+        // "/home": (context) => Homepage(),
+        // "/login": (context) => LoginPage(),
       },
     );
   }
